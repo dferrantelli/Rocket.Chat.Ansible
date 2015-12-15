@@ -4,6 +4,7 @@
     "script": "{{ rocket_chat_application_path }}/bundle/main.js",
     "out_file": "/var/log/rocket.chat/app.log",
     "error_file": "/var/log/rocket.chat/err.log",
+    "watch": true,
     "port": "{{ rocket_chat_service_port }}",
     "env": {
       "MONGO_URL": "mongodb://{{ rocket_chat_mongodb_server }}:{{ rocket_chat_mongodb_port }}/rocketchat",

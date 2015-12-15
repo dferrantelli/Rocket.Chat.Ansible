@@ -96,7 +96,7 @@
       dest: "{{ rocket_chat_application_path }}"
       creates: "{{ rocket_chat_application_path }}/bundle"
     tags: build
-      
+
   - name: Install Rocket.Chat via NPM
     npm:
       state: present
@@ -108,6 +108,8 @@
       src: pm2-rocket-chat.json.j2
       dest: /var/www/rocket.chat/pm2-rocket-chat.json
     tags: build
+    notify: 
+      - Reload PM2 config
 
   - name: Register Rocket.Chat service status
     shell: pm2 show rocket.chat | fgrep online
@@ -116,7 +118,7 @@
     register: rocketchat_service_status
 
   - name: Ensure Rocket.Chat is running via PM2
-    shell: pm2 start pm2-rocket-chat.json --watch
+    shell: pm2 start pm2-rocket-chat.json
     args:
       chdir: /var/www/rocket.chat
     when: rocketchat_service_status.rc != 0

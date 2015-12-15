@@ -7,3 +7,8 @@
     include: ../tasks/upgrade.yml
     tags:
       - upgrade
+
+  - name: Reload PM2 config
+    shell: pm2 reload pm2-rocket-chat.json
+    args:
+      chdir: /var/www/rocket.chat
