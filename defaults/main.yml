@@ -8,6 +8,7 @@ rocket_chat_tarball_sha256sum: eb6509d75266d2a02d8f50364d9177c961320e442c2d74ac4
 rocket_chat_service_host: "{{ ansible_fqdn }}"
 rocket_chat_service_port: 3000
 rocket_chat_external_port: 3000
+rocket_chat_external_ssl: False
 
 # MongoDB settings
 rocket_chat_mongodb_packages: mongodb

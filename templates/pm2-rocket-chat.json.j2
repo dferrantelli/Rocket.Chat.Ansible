@@ -8,7 +8,11 @@
     "env": {
       "MONGO_URL": "mongodb://{{ rocket_chat_mongodb_server }}:{{ rocket_chat_mongodb_port }}/rocketchat",
       "MONGO_OPLOG_URL": "mongodb://{{ rocket_chat_mongodb_server }}:{{ rocket_chat_mongodb_port }}/local",
+      {% if rocket_chat_external_ssl %}
+      "ROOT_URL": "https://{{ rocket_chat_service_host }}:{{ rocket_chat_external_port }}",
+      {% else %}
       "ROOT_URL": "http://{{ rocket_chat_service_host }}:{{ rocket_chat_external_port }}",
+      {% endif %}
       "PORT": "{{ rocket_chat_service_port }}"
     }
   }]
